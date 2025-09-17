@@ -2,6 +2,7 @@
 **Case study one**: Supermarket Billing System
 
 package myassignment.java;
+
 import java.util.Scanner;
 
 public class supermarketbilling {
