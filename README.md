@@ -1,5 +1,6 @@
 # JAVA_PROGRAMMING_UWIMANA_AMINA_223009215_BIT_YEAR3
 **Case study one**: Supermarket Billing System
+
 package myassignment.java;
 import java.util.Scanner;
 
