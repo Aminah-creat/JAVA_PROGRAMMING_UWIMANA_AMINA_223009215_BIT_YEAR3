@@ -1,0 +1,104 @@
+package shape.assignment;
+
+import java.util.Scanner;
+
+	public class ShapeCalculator {
+	public static void main(String[] args) {
+	        Scanner sc = new Scanner(System.in);
+	        boolean continueProgram = true;
+
+	        while (continueProgram) {
+	            // Step 1: Select shape
+	            System.out.println("\nSelect a shape:");
+	            System.out.println("1. Rectangle");
+	            System.out.println("2. Circle");
+	            System.out.println("3. Square");
+	            System.out.println("4. Triangle");
+	            int choice = sc.nextInt();
+
+	            // Step 2: calculate
+	            System.out.println("What would you like to calculate?");
+	            System.out.println("A. Area");
+	            System.out.println("B. Perimeter");
+	            char calcChoice = sc.next().toUpperCase().charAt(0);
+
+	            double result = 0;
+
+	            switch (choice) {
+	                case 1: // Rectangle
+	                    System.out.print("Enter length: ");
+	                    double length = sc.nextDouble();
+	                    System.out.print("Enter width: ");
+	                    double width = sc.nextDouble();
+	                    if (calcChoice == 'A') {
+	                        result = length * width;
+	                        System.out.println("Area of Rectangle = " + result);
+	                    } else {
+	                        result = 2 * (length + width);
+	                        System.out.println("Perimeter of Rectangle = " + result);
+	                    }
+	                    break;
+
+	                case 2: // Circle
+	                    System.out.print("Enter radius: ");
+	                    double radius = sc.nextDouble();
+	                    if (calcChoice == 'A') {
+	                        result = Math.PI * radius * radius;
+	                        System.out.println("Area of Circle = " + result);
+	                    } else {
+	                        result = 2 * Math.PI * radius;
+	                        System.out.println("Perimeter (Circumference) of Circle = " + result);
+	                    }
+	                    break;
+
+	                case 3: // Square
+	                    System.out.print("Enter side: ");
+	                    double side = sc.nextDouble();
+	                    if (calcChoice == 'A') {
+	                        result = side * side;
+	                        System.out.println("Area of Square = " + result);
+	                    } else {
+	                        result = 4 * side;
+	                        System.out.println("Perimeter of Square = " + result);
+	                    }
+	                    break;
+
+	                case 4: // Triangle
+	                    System.out.print("Enter base: ");
+	                    double base = sc.nextDouble();
+	                    System.out.print("Enter height: ");
+	                    double height = sc.nextDouble();
+	                    if (calcChoice == 'A') {
+	                        result = 0.5 * base * height;
+	                        System.out.println("Area of Triangle = " + result);
+	                    } else {
+	                        System.out.print("Enter side1: ");
+	                        double side1 = sc.nextDouble();
+	                        System.out.print("Enter side2: ");
+	                        double side2 = sc.nextDouble();
+	                        System.out.print("Enter side3: ");
+	                        double side3 = sc.nextDouble();
+	                        result = side1 + side2 + side3;
+	                        System.out.println("Perimeter of Triangle = " + result);
+	                    }
+	                    break;
+
+	                default:
+	                    System.out.println("Invalid choice! Please select again.");
+	            }
+
+	            // Step 3: Ask if user wants to continue
+	            System.out.println("Would you like to continue? (yes/no)");
+	            String answer = sc.next().toLowerCase();
+	            if (answer.equals("no")) {
+	                continueProgram = false;
+	                System.out.println("Thank you for using system!");
+	            }
+	        }
+	        sc.close();
+	    }
+	}
+
+	
+
+	
