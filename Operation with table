@@ -1,0 +1,138 @@
+package com.guiAssignment;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
+
+
+public class OperationWithTable implements ActionListener{
+
+
+		JFrame frm;
+		// Labels
+		JLabel fn = new JLabel("First number");
+		JLabel sn = new JLabel("Second number");
+		JLabel rn = new JLabel("Result");
+		// Text Field
+		JTextField fntxf = new JTextField();
+		JTextField sntxf = new JTextField();
+		JTextField rntxf = new JTextField();
+		// Buttons
+		JButton add = new JButton("+");
+		JButton subt = new JButton("-");
+		JButton mult = new JButton("*");
+		JButton div = new JButton("/");
+		JButton mod = new JButton("%");
+		// Add a table for History
+		JTable table;
+		DefaultTableModel tableModel;
+		JScrollPane scrollPane;
+		// Constructor
+		public OperationWithTable(){
+			createaFrame();
+			setLocationAndSize();
+			addcomponentsToFrame();
+			addActionEvent();
+			
+			
+		}
+		private void addActionEvent() {
+			add.addActionListener(this);
+			subt.addActionListener(this);
+			mult.addActionListener(this);
+			div.addActionListener(this);
+			mod.addActionListener(this);
+			
+		}
+		private void addcomponentsToFrame() {
+			frm.add(fn); frm.add(sn); frm.add(rn);
+			frm.add(fntxf); frm.add(sntxf);
+			frm.add(rntxf); frm.add(add);
+			frm.add(subt); frm.add(mult);
+			frm.add(div);  frm.add(mod); frm.add(scrollPane);
+			
+			
+			
+		}
+		private void setLocationAndSize() {
+			// first number
+			fn.setBounds(10, 10, 100, 30);
+			fntxf.setBounds(120,10,100,30);
+			//second number
+			sn.setBounds(10, 10, 100, 30);
+			sntxf.setBounds(120,50,100,30);
+			// results
+			rn.setBounds(10, 90, 100, 30);
+			rntxf.setBounds(120,90,100,30);
+			 int x=10, y=130, w=50, h=30;
+			 add.setBounds(x,y,w,h);
+			 x+=40;
+			 add.setBounds(x,y,w,h);
+			 x+=40;
+			 subt.setBounds(x,y,w,h);
+			 x+=40;
+			 mult.setBounds(x,y,w,h);
+			 x+=40;
+			 div.setBounds(x,y,w,h);
+			 x+=40;
+			 mod.setBounds(x,y,w,h);
+			 x+=45;
+			 scrollPane.setBounds(10,180,260,150);
+			
+		}
+		private void createaFrame() {
+			frm = new JFrame("==Operations==");
+			//frm.setTitle("\t===Operations===");
+			frm.setBounds(10,30,400,400);
+			frm.getContentPane().setBackground(Color.GRAY);
+			frm.getContentPane().setLayout(null);
+			frm.setVisible(true);
+			frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frm.setResizable(false);
+			//
+			String[] columns = {"First","Operation","Second","Result"};
+			tableModel = new DefaultTableModel(columns,0);
+			table = new JTable(tableModel);
+			scrollPane = new JScrollPane();
+		}
+		public void actionPerformed(ActionEvent e) {
+			try{
+			int f_n = Integer.parseInt(fntxf.getText());
+			int s_n = Integer.parseInt(sntxf.getText());
+			int r_n=0;
+			String operator="";
+			if(e.getSource()==add){
+				r_n=f_n+s_n; operator ="+";
+				
+			}else if(e.getSource()==subt){
+				r_n=f_n-s_n; operator ="-";
+			}else if(e.getSource()==mult){
+				r_n=f_n*s_n; operator ="*";
+			}else if(e.getSource()==div){
+				r_n=f_n/s_n; operator ="/";	
+				
+			}else if(e.getSource()==mod){
+				r_n=f_n%s_n; operator ="%";
+			}
+			rntxf.setText(String.valueOf(r_n));
+			// add history
+			//tableModel.addRow(new Object[]{f_n,operator,s_n,r_n});
+			
+			}catch(Exception ex){
+				JOptionPane.showMessageDialog(frm,"Please enter valid number!");
+			}
+		}	
+	public static void main(String args[]){
+		 new OperationWithTable();
+	}
+	
+	}
+
+		
+	
+
+
