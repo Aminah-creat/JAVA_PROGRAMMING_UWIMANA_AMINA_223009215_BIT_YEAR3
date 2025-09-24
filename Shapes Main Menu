@@ -1,0 +1,135 @@
+// on 23 September 2025
+package com.form;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+public class ShapesMainMenus implements ActionListener{
+// declare and initialize components
+	JFrame frame;
+	// Buttons
+	JButton circlebtn = new JButton("Circle");
+	JButton rectanglebtn = new JButton("Rectangle");
+	JButton squarebtn = new JButton("Square");
+	JButton trianglebtn = new JButton("Triangle");
+	
+	//Constructor 
+	public ShapesMainMenus (){
+		createWindow();
+		setSizeAndLocation();
+		addComponentsToFrame();
+		addActionEvent();
+	}
+	
+	private void addActionEvent() {
+		circlebtn.addActionListener(this);
+		rectanglebtn.addActionListener(this);
+		squarebtn.addActionListener(this);
+		trianglebtn.addActionListener(this);
+		
+		
+	}
+
+	private void setSizeAndLocation() {
+		int y=30;
+		circlebtn.setBounds(100,y,120,30);
+		y+=40;
+		rectanglebtn.setBounds(100,y,120,30);
+		y+=40;
+		squarebtn.setBounds(100,y,120,30);
+		y+=40;
+		trianglebtn.setBounds(100,y,120,30);
+		
+		
+	}
+
+	private void addComponentsToFrame() {
+		frame.add(circlebtn);
+		frame.add(rectanglebtn);
+		frame.add(squarebtn);
+		frame.add(trianglebtn);
+		
+	}
+
+	private void createWindow() {
+		frame = new JFrame("===2D Shape===");
+		frame.setBounds(100,100,350,300);
+		frame.getContentPane().setBackground(Color.GRAY);
+		frame.getContentPane().setLayout(null);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==circlebtn){
+			new CircleShape();
+		}else if(e.getSource()==rectanglebtn){
+			new RectangleShape();
+	}else if(e.getSource()==squarebtn){
+		new SquareShape();
+	}else if(e.getSource()==trianglebtn){
+		new TriangleShape();
+	}
+	}
+	public static void main(String args[]) {
+    new ShapesMainMenus();
+	}
+}
+
+class CircleShape{
+	public CircleShape(){
+		String radius = JOptionPane.showInputDialog(null, "Enter radius");
+		if (radius!=null){double r= Double.parseDouble(radius);
+		double area = Math.PI*r*r;
+		double perim = 2*Math.PI*r;
+		JOptionPane.showMessageDialog(null,"circle: \nArea:"+area+"\nPerimeter:"+perim);
+		}
+	}
+}
+
+class RectangleShape{
+	public RectangleShape(){
+	String length= JOptionPane.showInputDialog(null,"Enter length:");
+	String width= JOptionPane.showInputDialog(null,"Enter width:");
+		if (length !=null && width!=null){double l=Double.parseDouble(length);
+		                double w= Double.parseDouble(width);
+		                double area=l*w;
+		                double perim=(l+w)*2;
+		                JOptionPane.showMessageDialog(null,"Rectangle:\nArea: "+area+
+		                		"\nPerimeter:"+perim);
+		}
+	}
+}
+
+class SquareShape{
+	public SquareShape(){	
+		String side= JOptionPane.showInputDialog(null,"Enter side:");
+			if (side !=null){double s=Double.parseDouble(side);
+			                double area=s*s;
+			                double perim=s*4;
+			                JOptionPane.showMessageDialog(null,"Square:\nArea: "+area+
+			                		"\nPerimeter:"+perim);
+			}
+	}
+}
+
+class TriangleShape{
+	public TriangleShape(){
+		String height= JOptionPane.showInputDialog(null,"Enter height:");
+		String base= JOptionPane.showInputDialog(null,"Enter base:");
+		String hy= JOptionPane.showInputDialog(null,"Enter hy:");
+			if (height !=null && hy!=null && base!=null){double h=Double.parseDouble(height);
+			                double b= Double.parseDouble(base);
+			                double hyp= Double.parseDouble(hy);
+			                double area=(h*b)/2;
+			                double perim=h+b+hyp;
+			                JOptionPane.showMessageDialog(null,"Rectangle:\nArea: "+area+
+			                		"\nPerimeter:"+perim);
+			}	
+	}
+}
