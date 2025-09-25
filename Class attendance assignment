@@ -1,0 +1,57 @@
+package myassignment.java;
+import java.util.Scanner;
+
+public class attendancetracker {
+
+	
+	public static void main(String[] args) {
+		        Scanner input = new Scanner(System.in);		                
+		        System.out.print("Enter total student number of class ");
+		                int totalStudents = input.nextInt();
+		                
+		                int[] attendance = new int[30];
+		                int dayCount = 0;
+		                String continueInput;
+		                
+		                System.out.println("===================== attendance list=================================== ===");
+		                
+		             
+		                do {
+		                    System.out.print("Day " + (dayCount + 1) + "available Students : ");
+		                    attendance[dayCount] = input.nextInt();
+		                    dayCount++;
+		                    
+		                    System.out.print("Enter attendance for other day? (yes/no): ");
+		                    continueInput = input.next();
+		                    
+		                } while (continueInput.equals("yes") && dayCount < 30);
+		                int totalAttendance = 0;
+		                for (int i = 0; i < dayCount; i++) {
+		                    totalAttendance += attendance[i];
+		                }
+		                double average = (double) totalAttendance / dayCount;
+		                int lowAttendanceDays = 0;
+		                for (int i = 0; i < dayCount; i++) {
+		                    if (attendance[i] < totalStudents * 0.5) {
+		                        lowAttendanceDays++;
+		                    }
+		                }
+		          
+		                System.out.println("\n=== ATTENDANCE general ===");
+		                System.out.println("Day\tStudents available");
+		                System.out.println("\t_");
+		                for (int i = 0; i < dayCount; i++) {
+		                    System.out.println((i + 1) + "\t" + attendance[i]);
+		                }
+		                       System.out.println("=============================== STATISTICS ==================");
+		                System.out.println("Total days recorded: " + dayCount);
+		                System.out.println("Average : " + average);
+		                System.out.println("Days with low attendance : " + lowAttendanceDays);
+		                
+		                double lowAttendancePercentage = (double) lowAttendanceDays / dayCount * 100;
+		                System.out.println("low attendance days on 100: " + lowAttendancePercentage + "%");
+		                
+		                input.close();
+		            }
+		            
+		        }
